@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.appkefu.lib.ui.widgets.KFResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/appkefu_chatting_bg_default" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout
+        android:id="@+id/appkefu_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/appkefu_title_bar"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/appkefu_titlebar_back_btn"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/appkefu_title_bar"
+            android:text="@string/appkefu_titlebar_backbtn_title"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/appkefu_titlebar_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:text="@string/appkefu_titlebar_title_text"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/appkefu_titlebar_rightbtn"
+            android:layout_width="67dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/appkefu_title_bar"
+            android:contentDescription="@string/appkefu_imageview_content_description"
+            android:src="@drawable/appkefu_titlebar_rightbtn_src"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- 聊天内容 listview -->
+    <com.appkefu.lib.ui.widgets.KFPullToRefreshListView
+        android:id="@+id/appkefu_message_content_listview"
+        android:scrollbars="vertical" 
+        android:transcriptMode="alwaysScroll" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/appkefu_bottom_input_extention"
+        android:layout_below="@+id/appkefu_title_bar"
+        android:layout_marginBottom="60dp"
+        android:cacheColorHint="#0000"
+        android:divider="@null"
+        android:scrollbarStyle="outsideOverlay"
+        android:stackFromBottom="true"/>
+
+    <LinearLayout
+        android:id="@+id/appkefu_voice_record_hintview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            layout="@layout/appkefu_voice_record_hintview" />
+    </LinearLayout>
+
+    <!-- 底部按钮以及编辑框 -->
+
+    <RelativeLayout
+        android:id="@+id/appkefu_bottom_extention"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <!-- 切换按钮/输入框/表情/Plus -->
+
+        <RelativeLayout
+            android:id="@+id/appkefu_bottom_inputbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/appkefu_bottombar_bg"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <Button
+                android:id="@+id/appkefu_inputbar_showmenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="7dp"
+                android:background="@drawable/appkefu_inputbar_showmenubtn"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/appkefu_inputbar_verticalline"
+                android:layout_width="0.5dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/appkefu_inputbar_showmenu"
+                android:background="#C0C0C0"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/appkefu_inputbar_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_toRightOf="@+id/appkefu_inputbar_verticalline"
+                android:background="@drawable/appkefu_inputbar_voicebtn" />
+
+            <EditText
+                android:id="@+id/appkefu_inputbar_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@+id/appkefu_inputbar_plus"
+                android:layout_toRightOf="@+id/appkefu_inputbar_voice"
+                android:background="@drawable/appkefu_inputbar_edittext"
+                android:imeOptions="actionSend|flagNoEnterAction"
+                android:inputType="textCapSentences|textAutoCorrect|textMultiLine|textShortMessage"
+                android:maxLines="4"
+                android:paddingRight="30dp" />
+
+            <Button
+                android:id="@+id/appkefu_inputbar_emotionbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@+id/appkefu_inputbar_plus"
+                android:background="@drawable/appkefu_inputbar_emotionbtn" />
+
+            <Button
+                android:id="@+id/appkefu_inputbar_recordvoicebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@+id/appkefu_inputbar_plus"
+                android:layout_toRightOf="@+id/appkefu_inputbar_voice"
+                android:background="@drawable/appkefu_inputbar_recordvoicebtn"
+                android:text="@string/appkefu_press_to_speak"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/appkefu_inputbar_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/appkefu_inputbar_plus"
+                 />
+            
+<!--             <Button  -->
+<!--                 android:id="@+id/appkefu_inputbar_send_btn" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_alignParentRight="true" -->
+<!--                 android:layout_centerVertical="true" -->
+<!--                 android:layout_marginBottom="5dp" -->
+<!--                 android:layout_marginLeft="5dp" -->
+<!--                 android:layout_marginRight="5dp" -->
+<!--                 android:layout_marginTop="7dp" -->
+<!--                 android:text="@string/appkefu_inputbar_send" -->
+<!--                 android:background="@drawable/appkefu_inputbar_sendbtn" -->
+<!--                 android:visibility="gone"/> -->
+            
+        </RelativeLayout>
+
+        <LinearLayout 
+            android:id="@+id/appkefu_bottom_menubar" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/appkefu_bottombar_bg" 
+            android:visibility="gone">
+            
+            <Button 
+                android:id="@+id/appkefu_menubar_hidemenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/appkefu_menubar_hidemenubtn"/>
+            
+            <View
+                android:id="@+id/appkefu_menubar_verticalline"
+                android:layout_width="0.5dp"
+                android:layout_height="50dp"
+                android:background="#C0C0C0" />
+            
+            <Button 
+                android:id="@+id/appkefu_menubar_menubtn_1"
+                android:layout_width="0dip"
+                android:layout_height="48dp"
+                android:text="menu1"
+                android:background="@drawable/appkefu_menubar_menubtn"
+                android:layout_weight="1"/>
+            
+            <Button 
+                android:id="@+id/appkefu_menubar_menubtn_2"
+                android:layout_width="0dip"
+                android:layout_height="48dp"
+                android:text="menu2"
+                android:background="@drawable/appkefu_menubar_menubtn"
+                android:layout_weight="1"/>
+            
+            <Button 
+                android:id="@+id/appkefu_menubar_menubtn_3"
+                android:layout_width="0dip"
+                android:layout_height="48dp"
+                android:text="menu3"
+                android:background="@drawable/appkefu_menubar_menubtn"
+                android:layout_weight="1"/>
+            
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/appkefu_emotion_relativelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appkefu_bottom_inputbar"
+            android:visibility="gone" >
+
+            <View
+                android:id="@+id/appkefu_inputbar_bottomline"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/appkefu_emotion_viewpager"
+                android:layout_width="wrap_content"
+                android:layout_height="222dp"
+                android:layout_below="@+id/appkefu_inputbar_bottomline"
+                android:background="#F3F3F3" />
+
+            <LinearLayout
+                android:id="@+id/appkefu_emotionview_pageindicator"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/appkefu_emotion_viewpager"
+                android:background="#F3F3F3"
+                android:gravity="center_horizontal" >
+
+                <ImageView
+                    android:id="@+id/appkefu_emotionview_pageindicator_imageview_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appkefu_imageview_content_description"
+                    android:padding="5dp"
+                    android:src="@drawable/appkefu_page_active" />
+
+                <ImageView
+                    android:id="@+id/appkefu_emotionview_pageindicator_imageview_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appkefu_imageview_content_description"
+                    android:padding="5dp"
+                    android:src="@drawable/appkefu_page_normal" />
+
+                <ImageView
+                    android:id="@+id/appkefu_emotionview_pageindicator_imageview_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appkefu_imageview_content_description"
+                    android:padding="5dp"
+                    android:src="@drawable/appkefu_page_normal" />
+
+                <ImageView
+                    android:id="@+id/appkefu_emotionview_pageindicator_imageview_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appkefu_imageview_content_description"
+                    android:padding="5dp"
+                    android:src="@drawable/appkefu_page_normal" />
+
+                <ImageView
+                    android:id="@+id/appkefu_emotionview_pageindicator_imageview_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appkefu_imageview_content_description"
+                    android:padding="5dp"
+                    android:src="@drawable/appkefu_page_normal" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/appkefu_emotion_send_btn_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/appkefu_emotionview_pageindicator"
+                android:background="#F3F3F3">
+
+                <Button
+                    android:id="@+id/appkefu_emotion_send_btn"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/appkefu_inputbar_emotion_sendbtn"
+                    android:enabled="false"
+                    android:text="@string/appkefu_inputbar_send"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/appkefu_inputbar_plus_bottomline"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/appkefu_bottom_inputbar"
+            android:background="#E0E0E0" />
+
+        <RelativeLayout
+            android:id="@+id/appkefu_plus_relativelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="288dp"
+            android:layout_below="@+id/appkefu_inputbar_plus_bottomline"
+            android:background="#F3F3F3"
+            android:visibility="gone" >
+
+            <ImageButton
+                android:id="@+id/appkefu_plus_pick_picture_btn"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/appkefu_pluspanel_btn"
+                android:contentDescription="@string/appkefu_imageview_content_description"
+                android:src="@drawable/appkefu_panel_pic_icon" />
+
+            <TextView
+                android:id="@+id/appkefu_plus_pick_picture_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/appkefu_plus_pick_picture_btn"
+                android:layout_below="@+id/appkefu_plus_pick_picture_btn"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/appkefu_pick_picture_label" />
+
+            <ImageButton
+                android:id="@+id/appkefu_plus_take_picture_btn"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@+id/appkefu_plus_pick_picture_btn"
+                android:background="@drawable/appkefu_pluspanel_btn"
+                android:contentDescription="@string/appkefu_imageview_content_description"
+                android:src="@drawable/appkefu_panel_voice_icon" />
+
+            <TextView
+                android:id="@+id/appkefu_plus_take_picture_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/appkefu_plus_take_picture_btn"
+                android:layout_below="@+id/appkefu_plus_take_picture_btn"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/appkefu_take_picture_label" />
+            
+            <ImageButton 
+                android:id="@+id/appkefu_plus_show_faq_btn"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@+id/appkefu_plus_take_picture_btn"
+                android:background="@drawable/appkefu_pluspanel_btn"
+                android:contentDescription="@string/appkefu_imageview_content_description"
+                android:src="@drawable/appkefu_panel_wxtalk_icon"/>
+            
+            <TextView 
+                android:id="@+id/appkefu_plus_show_faq_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/appkefu_plus_show_faq_btn"
+                android:layout_below="@+id/appkefu_plus_show_faq_btn"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/appkefu_show_faq_label"/>
+
+            <View
+                android:id="@+id/appkefu_plus_view_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/appkefu_plus_show_faq_btn" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</com.appkefu.lib.ui.widgets.KFResizeLayout>
